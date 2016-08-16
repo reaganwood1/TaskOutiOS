@@ -14,6 +14,11 @@
 		7F5B5AEE1D63771B00947736 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F5B5AEC1D63771B00947736 /* LaunchScreen.storyboard */; };
 		7F5B5AF91D63771B00947736 /* TaskOutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5B5AF81D63771B00947736 /* TaskOutTests.swift */; };
 		7F5B5B041D63771B00947736 /* TaskOutUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5B5B031D63771B00947736 /* TaskOutUITests.swift */; };
+		7F5B5B131D63782700947736 /* TaskManagerModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7F5B5B111D63782700947736 /* TaskManagerModel.xcdatamodeld */; };
+		7F5B5B1B1D637D7A00947736 /* TaskHeader+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5B5B171D637D7A00947736 /* TaskHeader+CoreDataProperties.swift */; };
+		7F5B5B1C1D637D7A00947736 /* TaskHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5B5B181D637D7A00947736 /* TaskHeader.swift */; };
+		7F5B5B1D1D637D7A00947736 /* TaskItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5B5B191D637D7A00947736 /* TaskItem+CoreDataProperties.swift */; };
+		7F5B5B1E1D637D7A00947736 /* TaskItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5B5B1A1D637D7A00947736 /* TaskItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +52,11 @@
 		7F5B5AFF1D63771B00947736 /* TaskOutUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TaskOutUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F5B5B031D63771B00947736 /* TaskOutUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskOutUITests.swift; sourceTree = "<group>"; };
 		7F5B5B051D63771B00947736 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7F5B5B121D63782700947736 /* TaskManagerModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TaskManagerModel.xcdatamodel; sourceTree = "<group>"; };
+		7F5B5B171D637D7A00947736 /* TaskHeader+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "TaskHeader+CoreDataProperties.swift"; path = "../TaskHeader+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		7F5B5B181D637D7A00947736 /* TaskHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskHeader.swift; path = ../TaskHeader.swift; sourceTree = "<group>"; };
+		7F5B5B191D637D7A00947736 /* TaskItem+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "TaskItem+CoreDataProperties.swift"; path = "../TaskItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		7F5B5B1A1D637D7A00947736 /* TaskItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskItem.swift; path = ../TaskItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,11 +107,11 @@
 		7F5B5AE21D63771B00947736 /* TaskOut */ = {
 			isa = PBXGroup;
 			children = (
+				7F5B5B161D637D1000947736 /* Controller */,
+				7F5B5B151D637D0B00947736 /* View */,
+				7F5B5B141D637D0500947736 /* Model */,
 				7F5B5AE31D63771B00947736 /* AppDelegate.swift */,
-				7F5B5AE51D63771B00947736 /* ViewController.swift */,
-				7F5B5AE71D63771B00947736 /* Main.storyboard */,
 				7F5B5AEA1D63771B00947736 /* Assets.xcassets */,
-				7F5B5AEC1D63771B00947736 /* LaunchScreen.storyboard */,
 				7F5B5AEF1D63771B00947736 /* Info.plist */,
 			);
 			path = TaskOut;
@@ -123,6 +133,35 @@
 				7F5B5B051D63771B00947736 /* Info.plist */,
 			);
 			path = TaskOutUITests;
+			sourceTree = "<group>";
+		};
+		7F5B5B141D637D0500947736 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7F5B5B111D63782700947736 /* TaskManagerModel.xcdatamodeld */,
+				7F5B5B171D637D7A00947736 /* TaskHeader+CoreDataProperties.swift */,
+				7F5B5B181D637D7A00947736 /* TaskHeader.swift */,
+				7F5B5B191D637D7A00947736 /* TaskItem+CoreDataProperties.swift */,
+				7F5B5B1A1D637D7A00947736 /* TaskItem.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		7F5B5B151D637D0B00947736 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7F5B5AEC1D63771B00947736 /* LaunchScreen.storyboard */,
+				7F5B5AE71D63771B00947736 /* Main.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		7F5B5B161D637D1000947736 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7F5B5AE51D63771B00947736 /* ViewController.swift */,
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,8 +295,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F5B5B131D63782700947736 /* TaskManagerModel.xcdatamodeld in Sources */,
+				7F5B5B1C1D637D7A00947736 /* TaskHeader.swift in Sources */,
+				7F5B5B1B1D637D7A00947736 /* TaskHeader+CoreDataProperties.swift in Sources */,
 				7F5B5AE61D63771B00947736 /* ViewController.swift in Sources */,
 				7F5B5AE41D63771B00947736 /* AppDelegate.swift in Sources */,
+				7F5B5B1D1D637D7A00947736 /* TaskItem+CoreDataProperties.swift in Sources */,
+				7F5B5B1E1D637D7A00947736 /* TaskItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -500,6 +544,19 @@
 			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		7F5B5B111D63782700947736 /* TaskManagerModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				7F5B5B121D63782700947736 /* TaskManagerModel.xcdatamodel */,
+			);
+			currentVersion = 7F5B5B121D63782700947736 /* TaskManagerModel.xcdatamodel */;
+			path = TaskManagerModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 7F5B5AD81D63771B00947736 /* Project object */;
 }

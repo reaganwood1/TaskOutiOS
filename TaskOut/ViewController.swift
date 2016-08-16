@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class AllTasksViewController: UITableViewController, UITableViewDataSource {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +20,18 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        <#code#>
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+    }
+    
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 0
+    }
+    
 
 }
 

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15E65" minimumToolsVersion="Xcode 7.0">
+    <entity name="TaskHeader" representedClassName=".TaskHeader" syncable="YES">
+        <attribute name="taskTitle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="taskType" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="taskItem" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="TaskItem" inverseName="taskHeader" inverseEntity="TaskItem" syncable="YES"/>
+    </entity>
+    <entity name="TaskItem" representedClassName=".TaskItem" syncable="YES">
+        <attribute name="archived" optional="YES" attributeType="Boolean" indexed="YES" syncable="YES"/>
+        <attribute name="descriptionText" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="taskDate" optional="YES" attributeType="Date" indexed="YES" syncable="YES"/>
+        <attribute name="taskImage" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" indexed="YES" syncable="YES"/>
+        <attribute name="taskTime" optional="YES" attributeType="Double" defaultValueString="0.0" indexed="YES" syncable="YES"/>
+        <attribute name="taskType" optional="YES" attributeType="Integer 32" defaultValueString="0" indexed="YES" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <relationship name="taskHeader" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TaskHeader" inverseName="taskItem" inverseEntity="TaskHeader" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="TaskItem" positionX="-63" positionY="-18" width="128" height="165"/>
+        <element name="TaskHeader" positionX="-54" positionY="-9" width="128" height="90"/>
+    </elements>
+</model>

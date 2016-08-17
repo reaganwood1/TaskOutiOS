@@ -93,12 +93,7 @@ class AllTasksViewController: UITableViewController, NSFetchedResultsControllerD
                 //2. Present the view controller
                 self.navigationController?.pushViewController(allItemsVC, animated: true)
                 
-//                photoVC.locationOfPin = thisPin
-//                photoVC.pin = view.annotation
-//                photoVC.fetchedResultsController = fc
-                // once you have this, run the handler completionHandler!
-                
-            }
+            } // end if
         }// end if
 
         

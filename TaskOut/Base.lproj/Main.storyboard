@@ -209,15 +209,18 @@
                             <outlet property="delegate" destination="DHc-2J-cLK" id="KGD-bm-WJf"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <segue destination="Adu-pZ-JTS" kind="presentation" identifier="addItemUnderHeader" id="UiN-g9-X29"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oDB-gI-tzj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="298" y="971"/>
         </scene>
-        <!--View Controller-->
+        <!--Add Item For Header View Controller-->
         <scene sceneID="V53-Tk-oEk">
             <objects>
-                <viewController id="Adu-pZ-JTS" sceneMemberID="viewController">
+                <viewController id="Adu-pZ-JTS" customClass="AddItemForHeaderViewController" customModule="TaskOut" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ps1-CS-cpz"/>
                         <viewControllerLayoutGuide type="bottom" id="u4P-iT-Gr5"/>
@@ -262,7 +265,7 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="findOnMapButtonPressed:" destination="Adu-pZ-JTS" eventType="touchUpInside" id="xgI-tk-3zD"/>
+                                    <action selector="addItemButtonPressed:" destination="Adu-pZ-JTS" eventType="touchUpInside" id="f1g-IV-Fza"/>
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Enter Task Item" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="twu-Bt-j4x">
@@ -306,13 +309,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="activityView" destination="H9a-oW-IOT" id="zDI-ly-xeb"/>
-                        <outlet property="cancelButton" destination="m1w-Fw-MIQ" id="ir1-3J-Hfk"/>
-                        <outlet property="findOnMapButton" destination="XFC-Fs-LuT" id="EHF-ZB-gKw"/>
-                        <outlet property="locationTextView" destination="twu-Bt-j4x" id="bEa-Oa-BEm"/>
-                        <outlet property="studyingLabel" destination="cH7-On-hgd" id="Gm9-X3-JN2"/>
-                        <outlet property="todayLabel" destination="PAw-Gh-u5I" id="5Wb-PB-OkP"/>
-                        <outlet property="whereAreYouLabel" destination="dpa-I8-ela" id="7FU-Yy-AHG"/>
+                        <outlet property="addItemButton" destination="XFC-Fs-LuT" id="7Qj-4r-HGX"/>
+                        <outlet property="enterItemTextField" destination="twu-Bt-j4x" id="CQY-mP-nPh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2av-QA-LJl" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -33,27 +33,15 @@ class AllItemsViewController: UITableViewController, NSFetchedResultsControllerD
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let stackContext = appDelegate.stack.context
-        let fetchedRequest = NSFetchRequest(entityName: "TaskHeader")
-        
-        // Create a fetchrequest
-        let fr = NSFetchRequest(entityName: "TaskHeader")
-        fr.sortDescriptors = []
-        
-        // Create the FetchedResultsController
-        fetchedResultsController = NSFetchedResultsController(fetchRequest: fr,
-                                                              managedObjectContext: stackContext, sectionNameKeyPath: nil, cacheName: nil)
         tableView.reloadData()
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let taskCell = tableView.dequeueReusableCellWithIdentifier("itemCell", forIndexPath: indexPath)
-        let taskInformation = fetchedResultsController?.objectAtIndexPath(indexPath) as! TaskHeader
+        let taskInformation = fetchedResultsController?.objectAtIndexPath(indexPath) as! TaskItem
         //taskCell.detailTextLabel!.text = "Open to add or remove tasks"
-        taskCell.textLabel!.text = taskInformation.taskTitle
+        taskCell.textLabel!.text = taskInformation.title
         
         return taskCell
     }
@@ -77,16 +65,16 @@ class AllItemsViewController: UITableViewController, NSFetchedResultsControllerD
     }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        if(segue.identifier == "AddTaskSegue") { // set the fetched results controller for the next view
+        if(segue.identifier == "addItemUnderHeader") { // set the fetched results controller for the next view
             
-            let addTaskVC = (segue.destinationViewController as! AddItemViewController)
+            let addTaskVC = (segue.destinationViewController as! AddItemForHeaderViewController)
             addTaskVC.fetchedResultsController = fetchedResultsController
         } // end if
     }
     
     // on click for adding an item to the list
     func AddItem() {
-        var x = 1
+        self.performSegueWithIdentifier("addItemUnderHeader", sender: self)
     }
 }
 

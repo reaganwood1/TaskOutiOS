@@ -21,6 +21,7 @@
 		7F5B5B1E1D637D7A00947736 /* TaskItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5B5B1A1D637D7A00947736 /* TaskItem.swift */; };
 		7F5B5B221D63837F00947736 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5B5B211D63837F00947736 /* CoreDataStack.swift */; };
 		7F5B5B241D638C6600947736 /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5B5B231D638C6600947736 /* AddItemViewController.swift */; };
+		7FC704661D6502AD00A1A553 /* AllItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC704651D6502AD00A1A553 /* AllItemsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		7F5B5B1A1D637D7A00947736 /* TaskItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskItem.swift; path = ../TaskItem.swift; sourceTree = "<group>"; };
 		7F5B5B211D63837F00947736 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		7F5B5B231D638C6600947736 /* AddItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
+		7FC704651D6502AD00A1A553 /* AllItemsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllItemsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +168,7 @@
 			children = (
 				7F5B5AE51D63771B00947736 /* AllTasksViewController.swift */,
 				7F5B5B231D638C6600947736 /* AddItemViewController.swift */,
+				7FC704651D6502AD00A1A553 /* AllItemsViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 				7F5B5B1D1D637D7A00947736 /* TaskItem+CoreDataProperties.swift in Sources */,
 				7F5B5B1E1D637D7A00947736 /* TaskItem.swift in Sources */,
 				7F5B5B221D63837F00947736 /* CoreDataStack.swift in Sources */,
+				7FC704661D6502AD00A1A553 /* AllItemsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -534,6 +538,7 @@
 				7F5B5B0A1D63771B00947736 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7F5B5B0B1D63771B00947736 /* Build configuration list for PBXNativeTarget "TaskOutTests" */ = {
 			isa = XCConfigurationList;
@@ -542,6 +547,7 @@
 				7F5B5B0D1D63771B00947736 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7F5B5B0E1D63771B00947736 /* Build configuration list for PBXNativeTarget "TaskOutUITests" */ = {
 			isa = XCConfigurationList;
@@ -550,6 +556,7 @@
 				7F5B5B101D63771B00947736 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

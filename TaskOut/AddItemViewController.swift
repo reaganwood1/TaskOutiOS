@@ -10,9 +10,9 @@ import Foundation
 import UIKit
 import CoreData
 
-class AddItemViewController: UIViewController, NSFetchedResultsControllerDelegate {
+class AddItemViewController: UIViewController, NSFetchedResultsControllerDelegate, UITextViewDelegate {
     
-    @IBOutlet weak var TaskHeader: UITextView!
+    @IBOutlet weak var taskHeaderTextView: UITextView!
     @IBOutlet weak var addTaskButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
     
@@ -34,9 +34,24 @@ class AddItemViewController: UIViewController, NSFetchedResultsControllerDelegat
         super.init(coder: aDecoder)
     }
     
+    override func viewDidLoad() {
+        taskHeaderTextView.delegate = self
+    }
+    
     @IBAction func addItemButtonClicked(sender: AnyObject) {
-        if (TaskHeader.text != "Enter Task Header" || TaskHeader.text != "") {
-            
+        if (taskHeaderTextView.text != "Enter Task Header" && taskHeaderTextView.text != "") {
+            let taskHeader = TaskHeader(taskTitle: taskHeaderTextView.text, context: fetchedResultsController!.managedObjectContext)
+            do { // saves to the context so network is not hit unnecessarily again
+                try self.fetchedResultsController!.managedObjectContext.save()
+            }catch {
+                print("nothing was saved")
+            }
+            completeSearch()
+            self.dismissViewControllerAnimated(true, completion: { 
+                
+            })// end completion
+        } else {
+            print ("please enter text")
         } // end if
     }
     

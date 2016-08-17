@@ -169,25 +169,55 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="TaskHeader" destination="VVL-m3-VON" id="eB6-Wl-616"/>
-                        <outlet property="activityView" destination="R2q-Ig-pR0" id="VcQ-gV-zdl"/>
                         <outlet property="addTaskButton" destination="vIH-0D-YIP" id="ldx-ql-dxo"/>
-                        <outlet property="cancelButton" destination="YbP-Zn-5L7" id="We9-5z-epG"/>
-                        <outlet property="findOnMapButton" destination="vIH-0D-YIP" id="gf0-dS-gWS"/>
-                        <outlet property="locationTextView" destination="VVL-m3-VON" id="Evb-sc-I4Y"/>
-                        <outlet property="studyingLabel" destination="LkR-bj-IaC" id="36m-I5-mDG"/>
-                        <outlet property="todayLabel" destination="Y2Q-F0-1yc" id="6SY-cY-vAj"/>
-                        <outlet property="whereAreYouLabel" destination="Lf2-8H-trI" id="oXF-xj-d8n"/>
+                        <outlet property="taskHeaderTextView" destination="VVL-m3-VON" id="iPX-1t-YRJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oat-TE-814" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="980" y="254"/>
         </scene>
-        <!--Add Item View Controller-->
+        <!--All Items View Controller-->
+        <scene sceneID="eSE-U1-4By">
+            <objects>
+                <tableViewController storyboardIdentifier="AllItemsViewController" id="DHc-2J-cLK" customClass="AllItemsViewController" customModule="TaskOut" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="nMg-kl-aU2">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="itemCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="itemCell" textLabel="g2f-cO-4Bu" style="IBUITableViewCellStyleDefault" id="Uga-BK-dUc">
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Uga-BK-dUc" id="HYb-hl-ZKK">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="g2f-cO-4Bu">
+                                            <rect key="frame" x="15" y="0.0" width="570" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="DHc-2J-cLK" id="3Wc-a9-z8o"/>
+                            <outlet property="delegate" destination="DHc-2J-cLK" id="KGD-bm-WJf"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oDB-gI-tzj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="298" y="971"/>
+        </scene>
+        <!--View Controller-->
         <scene sceneID="V53-Tk-oEk">
             <objects>
-                <viewController id="Adu-pZ-JTS" customClass="AddItemViewController" customModule="TaskOut" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Adu-pZ-JTS" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ps1-CS-cpz"/>
                         <viewControllerLayoutGuide type="bottom" id="u4P-iT-Gr5"/>

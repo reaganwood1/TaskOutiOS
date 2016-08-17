@@ -21,6 +21,11 @@ class AllTasksViewController: UITableViewController, NSFetchedResultsControllerD
         } // end didSet
     } // end fetchedResultsController declaration
     
+    override func viewWillAppear(animated: Bool) {
+        tableView.reloadData()
+        completeSearch()
+    }
+    
     init(fetchedResultsController fc : NSFetchedResultsController) {
         fetchedResultsController = fc
         super.init(nibName: nil, bundle: nil)
@@ -46,14 +51,7 @@ class AllTasksViewController: UITableViewController, NSFetchedResultsControllerD
         // Create the FetchedResultsController
         fetchedResultsController = NSFetchedResultsController(fetchRequest: fr,
                                                               managedObjectContext: stackContext, sectionNameKeyPath: nil, cacheName: nil)
-        
-//        do {
-//            let results = try stackContext.executeFetchRequest(fetchedRequest)
-//            pins = results as! [NSManagedObject]
-//            addPinsToMap()
-//        } catch {
-//            print("error retrieving NSFetchedResultsController")
-//        }
+        tableView.reloadData()
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -68,9 +66,49 @@ class AllTasksViewController: UITableViewController, NSFetchedResultsControllerD
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
+        // create the ViewController
+        let allItemsVC = storyboard!.instantiateViewControllerWithIdentifier("AllItemsViewController") as! AllItemsViewController
+        
+        let headers = fetchedResultsController!.fetchedObjects as? [TaskHeader]
+        
+        let clickedHeaderTitle = headers![indexPath.row]
+        
+        if let headers = fetchedResultsController!.fetchedObjects as? [TaskHeader] {
+            let headersAfterFilter = headers.filter({ (h: TaskHeader) -> Bool in
+                return h.taskTitle == clickedHeaderTitle.taskTitle
+            })
+            if let thisHeader = headersAfterFilter.first {
+                //locationPin = thisPin
+                let fetch = NSFetchRequest(entityName: "TaskItem")
+                fetch.sortDescriptors = []
+                let predicate = NSPredicate(format: "taskHeader = %@", thisHeader)
+                fetch.predicate = predicate
+                
+                let fc = NSFetchedResultsController(fetchRequest: fetch, managedObjectContext: fetchedResultsController!.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+                
+                let camera = UIBarButtonItem(barButtonSystemItem: .Add, target: allItemsVC, action: Selector("AddItem"))
+                allItemsVC.navigationItem.rightBarButtonItem = camera
+                allItemsVC.fetchedResultsController = fc
+                
+                //2. Present the view controller
+                self.navigationController?.pushViewController(allItemsVC, animated: true)
+                
+//                photoVC.locationOfPin = thisPin
+//                photoVC.pin = view.annotation
+//                photoVC.fetchedResultsController = fc
+                // once you have this, run the handler completionHandler!
+                
+            }
+        }// end if
+
+        
+        
+        
+        
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         var count = 0
         
         if fetchedResultsController?.fetchedObjects?.count > 0 {
@@ -90,6 +128,7 @@ class AllTasksViewController: UITableViewController, NSFetchedResultsControllerD
             
             let addTaskVC = (segue.destinationViewController as! AddItemViewController)
             addTaskVC.fetchedResultsController = fetchedResultsController
+            
         } // end if
     }
 }
@@ -104,6 +143,70 @@ extension AllTasksViewController {
                 print("Error: could not performa a fetch \(e)")
             }
         }
+    }
+}
+
+
+// MARK:  - Delegate
+extension AllTasksViewController{
+    
+    
+    func controllerWillChangeContent(controller: NSFetchedResultsController) {
+        tableView.beginUpdates()
+    }
+    
+    func controller(controller: NSFetchedResultsController,
+                    didChangeSection sectionInfo: NSFetchedResultsSectionInfo,
+                                     atIndex sectionIndex: Int,
+                                             forChangeType type: NSFetchedResultsChangeType) {
+        
+        let set = NSIndexSet(index: sectionIndex)
+        
+        switch (type){
+            
+        case .Insert:
+            tableView.insertSections(set, withRowAnimation: .Fade)
+            
+        case .Delete:
+            tableView.deleteSections(set, withRowAnimation: .Fade)
+            
+        default:
+            // irrelevant in our case
+            break
+            
+        }
+    }
+    
+    
+    func controller(controller: NSFetchedResultsController,
+                    didChangeObject anObject: AnyObject,
+                                    atIndexPath indexPath: NSIndexPath?,
+                                                forChangeType type: NSFetchedResultsChangeType,
+                                                              newIndexPath: NSIndexPath?) {
+        
+        guard let newIndexPath = newIndexPath else{
+            fatalError("No indexPath received")
+        }
+        switch(type){
+            
+        case .Insert:
+            tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
+            
+        case .Delete:
+            tableView.deleteRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
+            
+        case .Update:
+            tableView.reloadRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
+            
+        case .Move:
+            tableView.deleteRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
+            tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
+        }
+        
+    }
+    
+    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+        tableView.endUpdates()
     }
 }
 

@@ -50,6 +50,7 @@ class AllTasksViewController: UITableViewController, NSFetchedResultsControllerD
         // Create the FetchedResultsController
         fetchedResultsController = NSFetchedResultsController(fetchRequest: fr,
                                                               managedObjectContext: stackContext, sectionNameKeyPath: nil, cacheName: nil)
+        //self.navigationController?.navigationBar.tintColor = UIColor(red:0.46, green:0.83, blue:0.52, alpha:1.0)
 
         tableView.reloadData()
     }
@@ -89,7 +90,9 @@ class AllTasksViewController: UITableViewController, NSFetchedResultsControllerD
                 let fc = NSFetchedResultsController(fetchRequest: fetch, managedObjectContext: fetchedResultsController!.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
                 
                 let camera = UIBarButtonItem(barButtonSystemItem: .Add, target: allItemsVC, action: Selector("AddItem"))
+                camera.tintColor = UIColor(red:0.46, green:0.83, blue:0.52, alpha:1.0)
                 allItemsVC.navigationItem.rightBarButtonItem = camera
+                //allItemsVC.navigationController?.navigationItem.backBarButtonItem?.tintColor = UIColor(red:0.46, green:0.83, blue:0.52, alpha:1.0)
                 allItemsVC.fetchedResultsController = fc
                 
                 allItemsVC.task = thisHeader // assign header for association

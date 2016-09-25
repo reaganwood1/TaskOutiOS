@@ -24,6 +24,7 @@ class AddItemViewController: UIViewController, NSFetchedResultsControllerDelegat
         } // end didSet
     } // end fetchedResultsController declaration
     
+    
     init(fetchedResultsController fc : NSFetchedResultsController) {
         fetchedResultsController = fc
         super.init(nibName: nil, bundle: nil)
@@ -36,10 +37,23 @@ class AddItemViewController: UIViewController, NSFetchedResultsControllerDelegat
     
     override func viewDidLoad() {
         taskHeaderTextView.delegate = self
+        
     }
     
     @IBAction func cancelButtonPressed(sender: AnyObject) {
         self.dismissViewControllerAnimated(true) {
+        }
+    }
+    
+    func textViewDidBeginEditing(textView: UITextView) {
+        if (textView.text == "Enter Task Header") {
+            textView.text = ""
+        }
+    }
+    
+    func textViewDidEndEditing(textView: UITextView) {
+        if (textView.text == "") {
+            textView.text = "Enter Task Header"
         }
     }
     
@@ -56,8 +70,22 @@ class AddItemViewController: UIViewController, NSFetchedResultsControllerDelegat
                 
             })// end completion
         } else {
-            print ("please enter text")
+            displayEmptyAlert("", message: "Please Enter a Task Item Header to Save", actionTitle: "Ok")
         } // end if
+    }
+    
+    func displayEmptyAlert(headTitle: String?, message: String?, actionTitle: String?){
+        
+        // run the alert in the main queue because it's a member of UIKit
+        dispatch_async(dispatch_get_main_queue(), {()-> Void in
+            
+            let alert = UIAlertController(title: headTitle, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: actionTitle, style: .Default, handler: { action in
+                
+            }))
+            self.presentViewController(alert, animated: true, completion: nil)
+            
+        }) // end image main queue completion handler
     }
     
 }

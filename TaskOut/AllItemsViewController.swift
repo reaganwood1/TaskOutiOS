@@ -38,7 +38,7 @@ class AllItemsViewController: UITableViewController, NSFetchedResultsControllerD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+         self.navigationController?.navigationBar.tintColor = UIColor(red:0.46, green:0.83, blue:0.52, alpha:1.0)
         // Do any additional setup after loading the view, typically from a nib.
         tableView.reloadData()
     }

@@ -17,7 +17,6 @@ class AllTasksViewController: UITableViewController, NSFetchedResultsControllerD
         didSet {
             fetchedResultsController?.delegate = self
             completeSearch()
-            //            mapDataReload()
         } // end didSet
     } // end fetchedResultsController declaration
     
@@ -51,6 +50,7 @@ class AllTasksViewController: UITableViewController, NSFetchedResultsControllerD
         // Create the FetchedResultsController
         fetchedResultsController = NSFetchedResultsController(fetchRequest: fr,
                                                               managedObjectContext: stackContext, sectionNameKeyPath: nil, cacheName: nil)
+
         tableView.reloadData()
     }
 
@@ -58,9 +58,11 @@ class AllTasksViewController: UITableViewController, NSFetchedResultsControllerD
         
         let taskCell = tableView.dequeueReusableCellWithIdentifier("taskHeaderCell", forIndexPath: indexPath)
         let taskInformation = fetchedResultsController?.objectAtIndexPath(indexPath) as! TaskHeader
-        taskCell.detailTextLabel!.text = "Open to add or remove tasks"
+        //taskCell.detailTextLabel!.text = "Open to add or remove tasks"
         taskCell.textLabel!.text = taskInformation.taskTitle
-        
+        taskCell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+        taskCell.tintColor = UIColor.whiteColor()
+        taskCell.layer.borderColor = UIColor.whiteColor().CGColor
         return taskCell
     }
     
@@ -89,6 +91,8 @@ class AllTasksViewController: UITableViewController, NSFetchedResultsControllerD
                 let camera = UIBarButtonItem(barButtonSystemItem: .Add, target: allItemsVC, action: Selector("AddItem"))
                 allItemsVC.navigationItem.rightBarButtonItem = camera
                 allItemsVC.fetchedResultsController = fc
+                
+                allItemsVC.task = thisHeader // assign header for association
                 
                 //2. Present the view controller
                 self.navigationController?.pushViewController(allItemsVC, animated: true)
@@ -179,8 +183,8 @@ extension AllTasksViewController{
                                                 forChangeType type: NSFetchedResultsChangeType,
                                                               newIndexPath: NSIndexPath?) {
         
-        guard let newIndexPath = newIndexPath else{
-            fatalError("No indexPath received")
+        guard let newIndexPath = indexPath else{
+            return
         }
         switch(type){
             

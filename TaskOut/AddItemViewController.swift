@@ -12,9 +12,9 @@ import CoreData
 
 class AddItemViewController: UIViewController, NSFetchedResultsControllerDelegate, UITextViewDelegate {
     
+    @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var taskHeaderTextView: UITextView!
     @IBOutlet weak var addTaskButton: UIButton!
-    @IBOutlet weak var cancelButton: UIButton!
     
     var fetchedResultsController : NSFetchedResultsController? {
         didSet {
@@ -38,6 +38,11 @@ class AddItemViewController: UIViewController, NSFetchedResultsControllerDelegat
         taskHeaderTextView.delegate = self
     }
     
+    @IBAction func cancelButtonPressed(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true) {
+        }
+    }
+    
     @IBAction func addItemButtonClicked(sender: AnyObject) {
         if (taskHeaderTextView.text != "Enter Task Header" && taskHeaderTextView.text != "") {
             let taskHeader = TaskHeader(taskTitle: taskHeaderTextView.text, context: fetchedResultsController!.managedObjectContext)
@@ -56,6 +61,7 @@ class AddItemViewController: UIViewController, NSFetchedResultsControllerDelegat
     }
     
 }
+
 
 extension AddItemViewController {
     

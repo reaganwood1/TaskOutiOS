@@ -14,6 +14,7 @@ class AddItemForHeaderViewController: UIViewController, NSFetchedResultsControll
     
     @IBOutlet weak var enterItemTextField: UITextView!
     @IBOutlet weak var addItemButton: UIButton!
+    var task: TaskHeader?
     
     var fetchedResultsController : NSFetchedResultsController? {
         didSet {
@@ -40,6 +41,8 @@ class AddItemForHeaderViewController: UIViewController, NSFetchedResultsControll
     @IBAction func addItemButtonPressed(sender: AnyObject) {
         if (enterItemTextField.text != "Enter Task Header" && enterItemTextField.text != "") {
             let item = TaskItem(title: enterItemTextField.text, context: (fetchedResultsController?.managedObjectContext)!)
+            item.taskHeader = task // assign header for the task
+            
             do { // saves to the context so network is not hit unnecessarily again
                 try self.fetchedResultsController!.managedObjectContext.save()
             }catch {

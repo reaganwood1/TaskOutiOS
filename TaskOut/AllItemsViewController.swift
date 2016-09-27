@@ -12,7 +12,7 @@ import CoreData
 
 class AllItemsViewController: UITableViewController, NSFetchedResultsControllerDelegate {
 
-    var task: TaskHeader?
+    var task: TaskHeader? // header corresponding to the data
     
     var fetchedResultsController : NSFetchedResultsController? {
         didSet {
@@ -38,33 +38,23 @@ class AllItemsViewController: UITableViewController, NSFetchedResultsControllerD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-         self.navigationController?.navigationBar.tintColor = UIColor(red:0.46, green:0.83, blue:0.52, alpha:1.0)
-        // Do any additional setup after loading the view, typically from a nib.
+         self.navigationController?.navigationBar.tintColor = UIColor(red:0.46, green:0.83, blue:0.52, alpha:1.0) // set the color of the bar item
         tableView.reloadData()
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let taskCell = tableView.dequeueReusableCellWithIdentifier("itemCell", forIndexPath: indexPath)
+        let taskCell = tableView.dequeueReusableCellWithIdentifier("itemCell", forIndexPath: indexPath) // put taskItems into the rows
         let taskInformation = fetchedResultsController?.objectAtIndexPath(indexPath) as! TaskItem
-        //taskCell.detailTextLabel!.text = "Open to add or remove tasks"
-        taskCell.textLabel!.text = taskInformation.title
+        taskCell.textLabel!.text = taskInformation.title // set taskItem to the Title
         
         return taskCell
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        let itemOfTask = fetchedResultsController!.objectAtIndexPath(indexPath) as! TaskItem
-//        self.fetchedResultsController!.managedObjectContext.deleteObject(itemOfTask) // delete the item
-//        do { // added so data context change is saved in coreData
-//            try self.fetchedResultsController!.managedObjectContext.save()
-//            self.completeSearch()
-//            tableView.reloadData()
-//        }catch {
-//            print("nothing was saved")
-//        }
-        self.displayAlert("", message: "Remove Item: \(itemOfTask.title!)", actionTitle1: "Cancel", actionTitle2: "Remove", item: itemOfTask)
+        let itemOfTask = fetchedResultsController!.objectAtIndexPath(indexPath) as! TaskItem // get item from fetched results controller
+        self.displayAlert("", message: "Remove Item: \(itemOfTask.title!)", actionTitle1: "Cancel", actionTitle2: "Remove", item: itemOfTask) // display alert messaging the user to delete the taskItem
 
     }
     
@@ -80,7 +70,7 @@ class AllItemsViewController: UITableViewController, NSFetchedResultsControllerD
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        if(segue.identifier == "addItemUnderHeader") { // set the fetched results controller for the next view
+        if(segue.identifier == "addItemUnderHeader") { // set the fetched results controller for the next view for adding items
             
             let addTaskVC = (segue.destinationViewController as! AddItemForHeaderViewController)
             addTaskVC.task = task // assign the task header so item can be added to it

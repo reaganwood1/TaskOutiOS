@@ -41,27 +41,36 @@ class AddItemForHeaderViewController: UIViewController, NSFetchedResultsControll
     }
     
     func textViewDidBeginEditing(textView: UITextView) {
-        if (textView.text == "Enter Task Item") {
+        if (textView.text == "Enter Task Item") { // set default text away on click for better user experience
             textView.text = ""
         }
     }
     
-    func textViewDidEndEditing(textView: UITextView) {
+    func textViewDidEndEditing(textView: UITextView) { // if editing ended with no text entered, set the default text
         if (textView.text == "") {
             textView.text = "Enter Task Item"
         }
+    }
+    
+    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        if(text == "\n") {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
     }
     
     @IBAction func cancelButtonPressed(sender: AnyObject) {
         self.dismissViewControllerAnimated(true) { 
         }
     }
+    
     @IBAction func addItemButtonPressed(sender: AnyObject) {
         if (enterItemTextField.text != "Enter Task Item" && enterItemTextField.text != "") {
             let item = TaskItem(title: enterItemTextField.text, context: (fetchedResultsController?.managedObjectContext)!)
             item.taskHeader = task // assign header for the task
             
-            do { // saves to the context so network is not hit unnecessarily again
+            do { // saves to the context
                 try self.fetchedResultsController!.managedObjectContext.save()
             }catch {
                 print("nothing was saved")
@@ -70,12 +79,13 @@ class AddItemForHeaderViewController: UIViewController, NSFetchedResultsControll
             self.dismissViewControllerAnimated(true, completion: {
                 
             })// end completion
-        } else {
+        } else { // in this case, prompts alert indicating no valid task was created
             displayEmptyAlert("", message: "Please Enter a Task Item Title to Save", actionTitle: "Ok")
         } // end if
 
     }
     
+    // function for alert displayed
     func displayEmptyAlert(headTitle: String?, message: String?, actionTitle: String?){
         
         // run the alert in the main queue because it's a member of UIKit

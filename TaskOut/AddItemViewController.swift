@@ -37,7 +37,6 @@ class AddItemViewController: UIViewController, NSFetchedResultsControllerDelegat
     
     override func viewDidLoad() {
         taskHeaderTextView.delegate = self
-        
     }
     
     @IBAction func cancelButtonPressed(sender: AnyObject) {
@@ -46,17 +45,26 @@ class AddItemViewController: UIViewController, NSFetchedResultsControllerDelegat
     }
     
     func textViewDidBeginEditing(textView: UITextView) {
-        if (textView.text == "Enter Task Header") {
+        if (textView.text == "Enter Task Header") { // on click, default text is removed
             textView.text = ""
         }
     }
     
     func textViewDidEndEditing(textView: UITextView) {
-        if (textView.text == "") {
+        if (textView.text == "") { // on end, if no text entered, default text will return
             textView.text = "Enter Task Header"
         }
     }
     
+    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        if(text == "\n") { // if return is pressed, keyboard will dismiss
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
+    }
+    
+    // Persists data entered to context
     @IBAction func addItemButtonClicked(sender: AnyObject) {
         if (taskHeaderTextView.text != "Enter Task Header" && taskHeaderTextView.text != "") {
             let taskHeader = TaskHeader(taskTitle: taskHeaderTextView.text, context: fetchedResultsController!.managedObjectContext)
@@ -66,7 +74,7 @@ class AddItemViewController: UIViewController, NSFetchedResultsControllerDelegat
                 print("nothing was saved")
             }
             completeSearch()
-            self.dismissViewControllerAnimated(true, completion: { 
+            self.dismissViewControllerAnimated(true, completion: {  // dismiss the controller on save
                 
             })// end completion
         } else {
@@ -74,6 +82,7 @@ class AddItemViewController: UIViewController, NSFetchedResultsControllerDelegat
         } // end if
     }
     
+    // function for handling alerts of different types
     func displayEmptyAlert(headTitle: String?, message: String?, actionTitle: String?){
         
         // run the alert in the main queue because it's a member of UIKit

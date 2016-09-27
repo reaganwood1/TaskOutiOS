@@ -13,7 +13,7 @@ class AllTasksViewController: UITableViewController, NSFetchedResultsControllerD
 
     @IBOutlet weak var addTaskButton: UIBarButtonItem!
     
-    var fetchedResultsController : NSFetchedResultsController? {
+    var fetchedResultsController : NSFetchedResultsController? { // controls manages objects
         didSet {
             fetchedResultsController?.delegate = self
             completeSearch()
@@ -21,8 +21,8 @@ class AllTasksViewController: UITableViewController, NSFetchedResultsControllerD
     } // end fetchedResultsController declaration
     
     override func viewWillAppear(animated: Bool) {
-        tableView.reloadData()
-        completeSearch()
+        tableView.reloadData() // reload the data when view appears
+        completeSearch() // fetch objects
     }
     
     init(fetchedResultsController fc : NSFetchedResultsController) {
@@ -40,30 +40,25 @@ class AllTasksViewController: UITableViewController, NSFetchedResultsControllerD
         // Do any additional setup after loading the view, typically from a nib.
         
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let stackContext = appDelegate.stack.context
-        let fetchedRequest = NSFetchRequest(entityName: "TaskHeader")
+        let stackContext = appDelegate.stack.context // get the context
         
         // Create a fetchrequest
-        let fr = NSFetchRequest(entityName: "TaskHeader")
+        let fr = NSFetchRequest(entityName: "TaskHeader") // get the fetched items
         fr.sortDescriptors = []
         
         // Create the FetchedResultsController
         fetchedResultsController = NSFetchedResultsController(fetchRequest: fr,
                                                               managedObjectContext: stackContext, sectionNameKeyPath: nil, cacheName: nil)
-        //self.navigationController?.navigationBar.tintColor = UIColor(red:0.46, green:0.83, blue:0.52, alpha:1.0)
 
-        tableView.reloadData()
+        tableView.reloadData() // reload the data after items are loaded into fetched results controller
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let taskCell = tableView.dequeueReusableCellWithIdentifier("taskHeaderCell", forIndexPath: indexPath)
-        let taskInformation = fetchedResultsController?.objectAtIndexPath(indexPath) as! TaskHeader
-        //taskCell.detailTextLabel!.text = "Open to add or remove tasks"
-        taskCell.textLabel!.text = taskInformation.taskTitle
-        taskCell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
-        taskCell.tintColor = UIColor.whiteColor()
-        taskCell.layer.borderColor = UIColor.whiteColor().CGColor
+        let taskInformation = fetchedResultsController?.objectAtIndexPath(indexPath) as! TaskHeader // get each taskHeader
+        taskCell.textLabel!.text = taskInformation.taskTitle // set the title to be displayed
+        taskCell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator // set a discluser indiccator
         return taskCell
     }
     
@@ -72,31 +67,32 @@ class AllTasksViewController: UITableViewController, NSFetchedResultsControllerD
         // create the ViewController
         let allItemsVC = storyboard!.instantiateViewControllerWithIdentifier("AllItemsViewController") as! AllItemsViewController
         
-        let headers = fetchedResultsController!.fetchedObjects as? [TaskHeader]
+        let headers = fetchedResultsController!.fetchedObjects as? [TaskHeader] // get the header array
         
-        let clickedHeaderTitle = headers![indexPath.row]
+        let clickedHeaderTitle = headers![indexPath.row] // get the selected header
         
-        if let headers = fetchedResultsController!.fetchedObjects as? [TaskHeader] {
+        if let headers = fetchedResultsController!.fetchedObjects as? [TaskHeader] { // if the header exists, get the objects contained within it
             let headersAfterFilter = headers.filter({ (h: TaskHeader) -> Bool in
-                return h.taskTitle == clickedHeaderTitle.taskTitle
+                return h.taskTitle == clickedHeaderTitle.taskTitle // if the titles match, get those objects
             })
             if let thisHeader = headersAfterFilter.first {
                 //locationPin = thisPin
-                let fetch = NSFetchRequest(entityName: "TaskItem")
+                let fetch = NSFetchRequest(entityName: "TaskItem") // fetch all items with TaskItem
                 fetch.sortDescriptors = []
-                let predicate = NSPredicate(format: "taskHeader = %@", thisHeader)
+                let predicate = NSPredicate(format: "taskHeader = %@", thisHeader) // filter for items corresponding to TaskHeader
                 fetch.predicate = predicate
                 
                 let fc = NSFetchedResultsController(fetchRequest: fetch, managedObjectContext: fetchedResultsController!.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
                 
-                let camera = UIBarButtonItem(barButtonSystemItem: .Add, target: allItemsVC, action: Selector("AddItem"))
-                camera.tintColor = UIColor(red:0.46, green:0.83, blue:0.52, alpha:1.0)
-                allItemsVC.navigationItem.rightBarButtonItem = camera
-                //allItemsVC.navigationController?.navigationItem.backBarButtonItem?.tintColor = UIColor(red:0.46, green:0.83, blue:0.52, alpha:1.0)
-                allItemsVC.fetchedResultsController = fc
+                let add = UIBarButtonItem(barButtonSystemItem: .Add, target: allItemsVC, action: Selector("AddItem")) // add a add button to the next view
+                add.tintColor = UIColor(red:0.46, green:0.83, blue:0.52, alpha:1.0) // set its color
+                allItemsVC.navigationItem.rightBarButtonItem = add // set the button to the view
+                allItemsVC.fetchedResultsController = fc // set fetched results controller to next view
                 
                 allItemsVC.task = thisHeader // assign header for association
-                
+                //allItemsVC.title = clickedHeaderTitle.taskTitle
+                allItemsVC.title = "My Items"
+
                 //2. Present the view controller
                 self.navigationController?.pushViewController(allItemsVC, animated: true)
                 
@@ -113,7 +109,7 @@ class AllTasksViewController: UITableViewController, NSFetchedResultsControllerD
         
         var count = 0
         
-        if fetchedResultsController?.fetchedObjects?.count > 0 {
+        if fetchedResultsController?.fetchedObjects?.count > 0 { // get number of rows for the section based on CoreData
             count = (fetchedResultsController?.fetchedObjects?.count)!
         }
         return count
@@ -121,7 +117,7 @@ class AllTasksViewController: UITableViewController, NSFetchedResultsControllerD
 
     @IBAction func addTaskButtonPressed(sender: AnyObject) {
         
-        self.performSegueWithIdentifier("AddTaskSegue", sender: self)
+        self.performSegueWithIdentifier("AddTaskSegue", sender: self) // segue to adding a TaskHeader
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

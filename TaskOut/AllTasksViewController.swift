@@ -12,6 +12,7 @@ import CoreData
 class AllTasksViewController: UITableViewController, NSFetchedResultsControllerDelegate {
 
     @IBOutlet weak var addTaskButton: UIBarButtonItem!
+    @IBOutlet weak var aboutButton: UIBarButtonItem!
     
     var fetchedResultsController : NSFetchedResultsController? { // controls manages objects
         didSet {
@@ -114,6 +115,11 @@ class AllTasksViewController: UITableViewController, NSFetchedResultsControllerD
         }
         return count
     }
+    
+    // segue for adding about me page
+    @IBAction func aboutButtonPressed(sender: AnyObject) {
+        self.performSegueWithIdentifier("PresentAboutTaskOutSegue", sender: self)
+    }
 
     @IBAction func addTaskButtonPressed(sender: AnyObject) {
         
@@ -127,7 +133,7 @@ class AllTasksViewController: UITableViewController, NSFetchedResultsControllerD
             let addTaskVC = (segue.destinationViewController as! AddItemViewController)
             addTaskVC.fetchedResultsController = fetchedResultsController
             
-        } // end if
+        }
     }
 }
 

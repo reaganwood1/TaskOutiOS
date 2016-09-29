@@ -22,6 +22,82 @@
             </objects>
             <point key="canvasLocation" x="-395" y="254"/>
         </scene>
+        <!--Basic Information View Controller-->
+        <scene sceneID="zD3-cg-UXx">
+            <objects>
+                <viewController id="clK-Si-RQi" customClass="BasicInformationViewController" customModule="TaskOut" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Klh-9c-gwg"/>
+                        <viewControllerLayoutGuide type="bottom" id="ULN-sH-zw8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="c5Y-xd-zCN">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iBt-LA-DtW">
+                                <rect key="frame" x="0.0" y="108" width="600" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="600" id="Dbt-xA-PK7"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eK1-N0-dW3">
+                                <rect key="frame" x="20" y="28" width="50" height="30"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Return">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="ReturnButtonPressed:" destination="clK-Si-RQi" eventType="touchUpInside" id="KHN-ZA-iFQ"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Welcome to TaskOut" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d7u-qn-TAd">
+                                <rect key="frame" x="151" y="59" width="230" height="30"/>
+                                <fontDescription key="fontDescription" type="italicSystem" pointSize="25"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="PK4-G4-Yle">
+                                <rect key="frame" x="290" y="248" width="20" height="20"/>
+                            </activityIndicatorView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cdr-qi-MTq">
+                                <rect key="frame" x="0.0" y="416" width="600" height="184"/>
+                                <color key="backgroundColor" red="0.45804598800000002" green="0.83108974359999999" blue="0.51986723109999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <string key="text">TaskOut was created with you in mind. It works to make your life easier, and keep track of everything you give it. My hope is that it gives you gift of spending less time worrying and more time doing the things you love. </string>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.45804598800000002" green="0.83108974359999999" blue="0.51986723109999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="iBt-LA-DtW" firstAttribute="top" secondItem="Klh-9c-gwg" secondAttribute="bottom" constant="88" id="0Pq-zk-qwP"/>
+                            <constraint firstItem="cdr-qi-MTq" firstAttribute="top" secondItem="iBt-LA-DtW" secondAttribute="bottom" constant="8" id="5yF-2r-SEY"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="iBt-LA-DtW" secondAttribute="trailing" constant="-20" id="8az-0t-hnY"/>
+                            <constraint firstItem="PK4-G4-Yle" firstAttribute="top" secondItem="iBt-LA-DtW" secondAttribute="bottom" constant="-160" id="9Ac-tY-GPS"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="eK1-N0-dW3" secondAttribute="leading" id="JIm-nx-vFG"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="cdr-qi-MTq" secondAttribute="trailing" constant="-20" id="K3Z-uI-5tH"/>
+                            <constraint firstItem="PK4-G4-Yle" firstAttribute="centerX" secondItem="c5Y-xd-zCN" secondAttribute="centerX" id="YZv-Kg-bmI"/>
+                            <constraint firstItem="d7u-qn-TAd" firstAttribute="top" secondItem="Klh-9c-gwg" secondAttribute="bottom" constant="39" id="e8S-SN-xPa"/>
+                            <constraint firstItem="cdr-qi-MTq" firstAttribute="leading" secondItem="c5Y-xd-zCN" secondAttribute="leadingMargin" constant="-20" id="mOM-lB-Ljk"/>
+                            <constraint firstItem="iBt-LA-DtW" firstAttribute="top" secondItem="d7u-qn-TAd" secondAttribute="bottom" constant="28" id="mcR-65-wSI"/>
+                            <constraint firstItem="eK1-N0-dW3" firstAttribute="top" secondItem="Klh-9c-gwg" secondAttribute="bottom" constant="8" id="no8-Zf-gOZ"/>
+                            <constraint firstItem="d7u-qn-TAd" firstAttribute="centerX" secondItem="c5Y-xd-zCN" secondAttribute="centerX" id="o1q-33-LVd"/>
+                            <constraint firstItem="iBt-LA-DtW" firstAttribute="leading" secondItem="c5Y-xd-zCN" secondAttribute="leadingMargin" constant="-20" id="tB3-jx-xh5"/>
+                            <constraint firstItem="ULN-sH-zw8" firstAttribute="top" secondItem="iBt-LA-DtW" secondAttribute="bottom" constant="192" id="tsq-sA-bTh"/>
+                            <constraint firstItem="ULN-sH-zw8" firstAttribute="top" secondItem="cdr-qi-MTq" secondAttribute="bottom" id="zQO-jy-umm"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="PK4-G4-Yle" id="zYZ-uM-bWl"/>
+                        <outlet property="imageView" destination="iBt-LA-DtW" id="azj-DU-SvT"/>
+                        <outlet property="returnButton" destination="eK1-N0-dW3" id="8NB-61-8RJ"/>
+                        <outlet property="textView" destination="cdr-qi-MTq" id="myG-AI-bDJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7oe-HU-hzg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="298" y="-471"/>
+        </scene>
         <!--My Tasks-->
         <scene sceneID="7Cf-i7-1Nm">
             <objects>
@@ -58,6 +134,12 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="My Tasks" id="WUP-W6-bse">
+                        <barButtonItem key="leftBarButtonItem" title="About" id="HJp-rt-mdv">
+                            <color key="tintColor" red="0.45804598800000002" green="0.83108974359999999" blue="0.51986723109999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="aboutButtonPressed:" destination="sfh-pV-nrJ" id="Yk0-dg-Mjc"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="I5T-8C-efI">
                             <color key="tintColor" red="0.45882352941176469" green="0.83137254901960778" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
@@ -66,8 +148,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="aboutButton" destination="HJp-rt-mdv" id="Y3N-nX-Gfn"/>
                         <outlet property="addTaskButton" destination="I5T-8C-efI" id="9on-9K-YOv"/>
                         <segue destination="d1H-No-yr4" kind="presentation" identifier="AddTaskSegue" id="l4f-Q4-jhC"/>
+                        <segue destination="clK-Si-RQi" kind="presentation" identifier="PresentAboutTaskOutSegue" id="7cp-lN-9Vq"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IQp-6I-4lO" userLabel="First Responder" sceneMemberID="firstResponder"/>

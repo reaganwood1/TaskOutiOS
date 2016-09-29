@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7F3747791D9CA1A20074B3AF /* BasicInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3747781D9CA1A20074B3AF /* BasicInformationViewController.swift */; };
+		7F37477B1D9CA27C0074B3AF /* FlickrPictureConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F37477A1D9CA27C0074B3AF /* FlickrPictureConvenience.swift */; };
 		7F5B5AE41D63771B00947736 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5B5AE31D63771B00947736 /* AppDelegate.swift */; };
 		7F5B5AE61D63771B00947736 /* AllTasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5B5AE51D63771B00947736 /* AllTasksViewController.swift */; };
 		7F5B5AE91D63771B00947736 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F5B5AE71D63771B00947736 /* Main.storyboard */; };
@@ -43,6 +45,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7F3747781D9CA1A20074B3AF /* BasicInformationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicInformationViewController.swift; sourceTree = "<group>"; };
+		7F37477A1D9CA27C0074B3AF /* FlickrPictureConvenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrPictureConvenience.swift; sourceTree = "<group>"; };
 		7F5B5AE01D63771B00947736 /* TaskOut.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskOut.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F5B5AE31D63771B00947736 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7F5B5AE51D63771B00947736 /* AllTasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTasksViewController.swift; sourceTree = "<group>"; };
@@ -152,6 +156,7 @@
 				7F5B5B191D637D7A00947736 /* TaskItem+CoreDataProperties.swift */,
 				7F5B5B1A1D637D7A00947736 /* TaskItem.swift */,
 				7F5B5B211D63837F00947736 /* CoreDataStack.swift */,
+				7F37477A1D9CA27C0074B3AF /* FlickrPictureConvenience.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -172,6 +177,7 @@
 				7F5B5B231D638C6600947736 /* AddItemViewController.swift */,
 				7FC704651D6502AD00A1A553 /* AllItemsViewController.swift */,
 				7FC704671D651F9600A1A553 /* AddItemForHeaderViewController.swift */,
+				7F3747781D9CA1A20074B3AF /* BasicInformationViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -309,8 +315,10 @@
 			files = (
 				7FC704681D651F9600A1A553 /* AddItemForHeaderViewController.swift in Sources */,
 				7F5B5B131D63782700947736 /* TaskManagerModel.xcdatamodeld in Sources */,
+				7F3747791D9CA1A20074B3AF /* BasicInformationViewController.swift in Sources */,
 				7F5B5B1C1D637D7A00947736 /* TaskHeader.swift in Sources */,
 				7F5B5B1B1D637D7A00947736 /* TaskHeader+CoreDataProperties.swift in Sources */,
+				7F37477B1D9CA27C0074B3AF /* FlickrPictureConvenience.swift in Sources */,
 				7F5B5AE61D63771B00947736 /* AllTasksViewController.swift in Sources */,
 				7F5B5AE41D63771B00947736 /* AppDelegate.swift in Sources */,
 				7F5B5B241D638C6600947736 /* AddItemViewController.swift in Sources */,

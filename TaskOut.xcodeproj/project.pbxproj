@@ -8,7 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		7F3747791D9CA1A20074B3AF /* BasicInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3747781D9CA1A20074B3AF /* BasicInformationViewController.swift */; };
-		7F37477B1D9CA27C0074B3AF /* FlickrPictureConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F37477A1D9CA27C0074B3AF /* FlickrPictureConvenience.swift */; };
+		7F37477D1D9CB2160074B3AF /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F37477C1D9CB2160074B3AF /* Reachability.swift */; };
+		7F37477F1D9CB4FA0074B3AF /* FlickrClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F37477E1D9CB4FA0074B3AF /* FlickrClient.swift */; };
+		7F3747811D9CB54D0074B3AF /* FlickrConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3747801D9CB54D0074B3AF /* FlickrConstants.swift */; };
+		7F3747831D9CBBC30074B3AF /* FlickrConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3747821D9CBBC30074B3AF /* FlickrConvenience.swift */; };
 		7F5B5AE41D63771B00947736 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5B5AE31D63771B00947736 /* AppDelegate.swift */; };
 		7F5B5AE61D63771B00947736 /* AllTasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5B5AE51D63771B00947736 /* AllTasksViewController.swift */; };
 		7F5B5AE91D63771B00947736 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F5B5AE71D63771B00947736 /* Main.storyboard */; };
@@ -46,7 +49,10 @@
 
 /* Begin PBXFileReference section */
 		7F3747781D9CA1A20074B3AF /* BasicInformationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicInformationViewController.swift; sourceTree = "<group>"; };
-		7F37477A1D9CA27C0074B3AF /* FlickrPictureConvenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrPictureConvenience.swift; sourceTree = "<group>"; };
+		7F37477C1D9CB2160074B3AF /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		7F37477E1D9CB4FA0074B3AF /* FlickrClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrClient.swift; sourceTree = "<group>"; };
+		7F3747801D9CB54D0074B3AF /* FlickrConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrConstants.swift; sourceTree = "<group>"; };
+		7F3747821D9CBBC30074B3AF /* FlickrConvenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrConvenience.swift; sourceTree = "<group>"; };
 		7F5B5AE01D63771B00947736 /* TaskOut.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskOut.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F5B5AE31D63771B00947736 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7F5B5AE51D63771B00947736 /* AllTasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTasksViewController.swift; sourceTree = "<group>"; };
@@ -150,13 +156,16 @@
 		7F5B5B141D637D0500947736 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7F37477C1D9CB2160074B3AF /* Reachability.swift */,
 				7F5B5B111D63782700947736 /* TaskManagerModel.xcdatamodeld */,
 				7F5B5B171D637D7A00947736 /* TaskHeader+CoreDataProperties.swift */,
 				7F5B5B181D637D7A00947736 /* TaskHeader.swift */,
 				7F5B5B191D637D7A00947736 /* TaskItem+CoreDataProperties.swift */,
 				7F5B5B1A1D637D7A00947736 /* TaskItem.swift */,
 				7F5B5B211D63837F00947736 /* CoreDataStack.swift */,
-				7F37477A1D9CA27C0074B3AF /* FlickrPictureConvenience.swift */,
+				7F3747821D9CBBC30074B3AF /* FlickrConvenience.swift */,
+				7F37477E1D9CB4FA0074B3AF /* FlickrClient.swift */,
+				7F3747801D9CB54D0074B3AF /* FlickrConstants.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -313,16 +322,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F37477D1D9CB2160074B3AF /* Reachability.swift in Sources */,
 				7FC704681D651F9600A1A553 /* AddItemForHeaderViewController.swift in Sources */,
 				7F5B5B131D63782700947736 /* TaskManagerModel.xcdatamodeld in Sources */,
 				7F3747791D9CA1A20074B3AF /* BasicInformationViewController.swift in Sources */,
 				7F5B5B1C1D637D7A00947736 /* TaskHeader.swift in Sources */,
 				7F5B5B1B1D637D7A00947736 /* TaskHeader+CoreDataProperties.swift in Sources */,
-				7F37477B1D9CA27C0074B3AF /* FlickrPictureConvenience.swift in Sources */,
 				7F5B5AE61D63771B00947736 /* AllTasksViewController.swift in Sources */,
+				7F3747811D9CB54D0074B3AF /* FlickrConstants.swift in Sources */,
+				7F3747831D9CBBC30074B3AF /* FlickrConvenience.swift in Sources */,
 				7F5B5AE41D63771B00947736 /* AppDelegate.swift in Sources */,
 				7F5B5B241D638C6600947736 /* AddItemViewController.swift in Sources */,
 				7F5B5B1D1D637D7A00947736 /* TaskItem+CoreDataProperties.swift in Sources */,
+				7F37477F1D9CB4FA0074B3AF /* FlickrClient.swift in Sources */,
 				7F5B5B1E1D637D7A00947736 /* TaskItem.swift in Sources */,
 				7F5B5B221D63837F00947736 /* CoreDataStack.swift in Sources */,
 				7FC704661D6502AD00A1A553 /* AllItemsViewController.swift in Sources */,

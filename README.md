@@ -10,6 +10,8 @@ HOW TO USE
 
 TaskOut begins by directing you to the home screen labeled "My Tasks". This is where all your task groups are located. A task group is a grouping of related tasks that need to be completed. In order to add a task, click on the "+" icon in the top right hand corner. Then, a new view is launched for the purpose of adding a task header. On completion, the view is dismissed and the task is persisted and displayed in "My Tasks". Now, you can start by click on the task you just created, and adding task items to it. This can be accomplished by pressing the "+" button on the top right side of the navigation controller. One thing I love to do is put my grocery list in TaskOut. I start by making a taskHeader for "Groceries". Then, I can add all of the things that I need to get at the grocery store. After I have picked up the items I need from the store, I can click on them and remove them from the task list.
 
+Additionally, there is an "About" page on the "My Tasks" page. This is used to display a beautiful photo and give a little information about the app to users.
+
 TaskOut provides a unique and fun way of managing the things and tasks you need to get done in your life. Whatever they may be, TaskOut fits you.
 
 Conclusion

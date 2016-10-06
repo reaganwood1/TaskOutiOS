@@ -62,7 +62,7 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cdr-qi-MTq">
                                 <rect key="frame" x="0.0" y="416" width="600" height="184"/>
                                 <color key="backgroundColor" red="0.45804598800000002" green="0.83108974359999999" blue="0.51986723109999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <string key="text">TaskOut was created with you in mind. It works to make your life easier, and keep track of everything you give it. My hope is that it gives you gift of spending less time worrying and more time doing the things you love. </string>
+                                <string key="text">TaskOut was created with you in mind. It works to make your life easier, and keep track of everything you give it. My hope is that it gives you the gift of spending less time worrying and more time doing the things you love. </string>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
